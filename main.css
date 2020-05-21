@@ -1,0 +1,211 @@
+/*CSS doc*/
+
+body {
+
+	background-size: cover;
+	
+	background-repeat: no-repeat;
+	text-align: center;
+	line-height: 150%;
+	font-family: Tahoma, Verdana, Segoe, sans-serif;
+}
+h1 {
+	color:#8B4513;
+	font-size: 40pt; 
+	font-weight: bold; 
+	text-transform: uppercase; 
+	text-align: center;
+	
+	padding-top: 10px;
+	padding-bottom: 10px;
+	
+}
+
+h2 {
+	font-weight: bold;
+	margin: 15px;
+	color:#8B4513;
+	text-align: center;
+	font-size: 20pt;
+}
+
+h3 {
+	padding: 20px;
+	color:#8B4513;
+	font-size: 15pt;
+	text-align: center;
+	margin-top: 15px;
+}
+
+h4 {
+	color:#8B4513;
+	font-size: 15pt;
+	text-align: center;
+	margin: 5px 0px 5px 0px;
+}
+
+h5 {
+	font-size: 12pt;
+	text-align: center;	
+	margin-top: 15px;
+}
+
+table {
+	width: 80%;
+	padding: 20px 0px 20px 0px;
+}
+
+.tableCenter {
+	margin-left:auto; 
+	margin-right:auto;
+}
+
+.characterTable {
+	width: 100%;
+	margin-left:auto; 
+	margin-right:auto;
+	border: 6px double #F90;
+	padding: 20px 0px 20px 0px;
+}
+
+table.characterTable td{
+	padding: 10px;
+	width:50%;
+	border: 6px double #F90;
+}
+table.characterTable th{
+	width:50%;
+	font-size: 30px;
+	margin: 5px 0px 5px 0;
+	border: 6px double #F90;
+}
+th {
+	width:50%;
+	font-weight: bold;
+	color:#8B4513;
+	font-size: 20px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+td {
+	margin: 5px;
+	width:50%;
+	color:#8B4513;
+	text-align: left;
+	font-size: 14pt;
+	vertical-align: top;
+}
+
+.btn {
+  background-color: #222222;
+  color: orange;
+  padding: 10px 1px;
+  border: 6px solid #F90; ;
+  cursor: pointer; /*When the cursor goes anything with this class it will become a pointer, indicating that it can be clicked */
+  width: 20%;
+  opacity: 0.90; /*Changes the transparency of the background colour */
+  font-size: 17pt; 
+  font-weight: 600;
+  text-transform: uppercase; 
+  margin: 20px;
+}
+
+.btn2 {
+  background-color: #222222;
+  color: orange;
+  padding: 10px 1px;
+  border: 6px solid #F90; ;
+  cursor: pointer; /*When the cursor goes anything with this class it will become a pointer, indicating that it can be clicked */
+  width: 20%;
+  opacity: 0.90; /*Changes the transparency of the background colour */
+  font-size: 17pt; 
+  font-weight: 600;
+  text-transform: uppercase; 
+  margin-bottom: 20px;
+}
+
+.continueButton {
+  background-color: #222222;
+  color: orange;
+  padding: 10px 1px;
+  border: 6px solid #F90; ;
+  cursor: pointer; /*When the cursor goes anything with this class it will become a pointer, indicating that it can be clicked */
+  width: 20%;
+  opacity: 0.90; /*Changes the transparency of the background colour */
+  font-size: 17pt; 
+  font-weight: 600;
+  text-transform: uppercase; 
+
+}
+
+.select-css{ /*This changes the input where the type is text (this is generalized as a [attribute=value] selector that only selects the value specified), so just the box where the user enters their name. The class select-css refers to the dropdown menu of the difficulty.*/
+  font-size: 15px;
+  font-weight: 700;
+  width: 50%;
+  padding: 10px;
+  margin: 10px 0 10px 0;
+  border: none;
+  background: #f1f1f1;
+  border-radius: .5em; /*rounds the border's edges*/
+}
+#container_1, #container_2{
+
+	padding: 30px;
+	margin: 30px auto 30px auto;
+	width: 800px;
+	
+}
+
+a:link {
+	color: #FF77D8;
+	text-decoration: underline;
+}
+a:hover {
+	color: #FFFFFF;
+}
+
+div {
+	
+	margin-top: 20px;
+	align-content: center;
+}
+
+.btn:hover {
+  opacity: 100;
+}
+
+nav {
+	text-align: center;
+	margin: 50px auto 50px auto;
+}
+nav ul li {
+	display: inline;
+
+}
+
+li {
+	color:#222222;
+	font-size: 20pt;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+.character {
+	cursor: pointer;
+	transition: .15s; 
+	} 
+	/*it takes .15 seconds to do the transformation*/
+.character:hover { 
+	transform: scale(1.2); 
+	} 
+	/*while hovering, the image will become 1.2 times the size of the original image*/
+/*Source: https://css-tricks.com/snippets/css/scale-on-hover-with-webkit-transition/ */
+
+
+.bar:after,.bar:before{content:"";display:table;clear:both}
+
+.bar-red{background-color:#ff4c4c!important}
+.bar-green{background-color:#4CAF50!important}
+.grey{background-color:#f1f1f1!important}
+
+/*Source: https://www.w3schools.com/w3css/w3css_progressbar.asp */
