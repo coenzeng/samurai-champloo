@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Introduction Page</title> 
+
+<link rel="stylesheet" type="text/css" href="css/browser_reset.css">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+
+<style>
+
+
+	body {
+
+	background-image:url("./images/bossbackground.jpg");
+	
+	
+	}
+	#container_1{
+	background-color: #ffe4b5;
+	}
+	
+</style>
+
+<script>
+
+
+	function proceed(){
+		window.location = "page9.html";
+	
+		return false;
+	}
+	
+	
+	
+</script>
+
+</head>
+
+<body>
+
+<div id="container_1"> 
+<form  name="displayThings" method="post" onclick="return false;">
+
+
+<label for="playerInput"></label>
+	<h1>a monologue</h1>
+<div>
+<table class="characterTable">
+	<tr>
+		<td><img src="images/boss.png" width=400 alt="boss"></td>
+		<td id="message">Seems like you know your stuff, but, sigh... I'm still in the presence of an idiot. That Shusui that you bought to enter the gates is notwhere near a legendary sword. It's just another ragged old sword that we use to lure unsuspecting fools like you to fight me, all while making cash. In fact, Chiyo works under me, and after I defeat the contestant, I return Shusui to Chiyo and rise and repeat the process. Today would have marked his 15th year working under me. Although, you have come with other equipment... perhaps the old bastard has been plotting to take me down. But never mind that. You were foolish enough to walk into this trap and unfortunately, you won't be able to tell this story to your grandchilden. Assume your stance.</td>
+	</tr>
+    
+</table>
+		<div>
+	<button type="submit" value="Submit" class="btn2" id="key" onclick="return proceed()">fight!</button>
+</div>
+</div>
+</div>
+</form>
+
+</body>
+
+</html>
+
+

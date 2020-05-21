@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Introduction Page</title> 
+
+<link rel="stylesheet" type="text/css" href="css/browser_reset.css"> 
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<style>
+	body {
+		
+		background-image:url("./images/totalbackground.jpg");
+	
+	}
+	#container_1 {
+	margin-top: 80px;
+	}
+
+</style>
+	<script>
+	
+	
+	function mugen() {
+		document.getElementById("message").innerHTML = "Mugen: 'Infinity'";
+		document.getElementById("message1").src = "images/mugen2.jpg";
+		document.getElementById("message2").innerHTML = "Mugen is a free-spirited, angsty middle-aged man whose fighting style can be characterized by recklessness and hotheadness. He is considered rude and usually only serves his self-interests, especially when it comes to competitions, like his rivalry with Jin.";
+			var character = "mugen2";
+			window.character2 = character; //sets the variable 'character' as a global variable, except under the new variable 'character2'. This is so that it can be accessed in other functions
+			showStart(); //the show button is made visible
+	}
+	
+	function fuu() {
+		document.getElementById("message").innerHTML = "Fuu: 'Tanager'";
+		document.getElementById("message1").src = "images/fuu2.jpg";	
+		document.getElementById("message2").innerHTML = "Fuu's main goal, allegedly, is to find the 'Sunflower Samurai,' and she drags along Mugen and Jin her quest. He acts as a motherly figure often times since she's always taking care and worrying about what the other two swordsmen are up to.";
+		var character = "fuu2";
+		window.character2 = character;
+		showStart();
+	}
+	
+	function jin() {
+		document.getElementById("message").innerHTML = "Jin: 'Benevolence'";
+		document.getElementById("message1").src = "images/jin2.jpg";
+		document.getElementById("message2").innerHTML = "Jin is calm and collected even under the most dire circumstances, and will take on enemies alone if it means his friends will escape. His quietness makes him seem distant to Mugen and Fuu, but admittedly he spends most of his time in isolation honing his skills.";
+		var character = "jin2";
+		window.character2 = character;
+		showStart();
+	}
+	
+	function showStart(){
+	document.getElementById("start").style.visibility = "visible"; //the start button is hidden until a character is chosen
+	}
+	function pageChange(){
+		
+		sessionStorage.setItem("character", character2); //stores which character the user picked
+		window.location = "page3.html"; //goes to the main town page
+		return false;
+		
+	}
+
+	</script>
+</head>
+
+<body>
+
+<form name="game" method="post" onSubmit="return false;">
+<div id="container_1"> 
+
+<label for="playerInput"></label>
+
+<img src="images/logo.png" width="500" alt="samurai champloo logo">
+		<h1>The Game</h1>
+<h3 style="padding-bottom: 0px">Welcome to Samurai Champloo, set in the Tokugawa Era, a period between 1603 and 1868 in Japan. Join the three main characters as they attempt to survive while inadvertently save a village.</h3>
+
+<h3>Your goal is to defeat Rikiei, a gang leader that’s terrorizing the town of Takahata. To challenge him to an honourable duel, you must find and give him a valuable item at the doors of his headquarters. Regulars at the town tell you to head to gambling house for quick cash, but others warn you; it’s just a trap for foreigners. You have $1000 on hand but need more to acquire something substantial. Conflicted, you ponder your options while standing in the middle of the town. Time is ticking.</h3> 
+
+<h2>Choose your character:</h2>
+ 
+
+<table class="tableCenter">
+    <tr>
+    	<td> <input type="image" class="character" width="180" height="180" alt="Mugen"
+				 src="images/mugen.png" onclick="mugen();">
+        </td>
+        <td> <input type="image" class="character" width="180" height="180" alt="Fuu"
+				 src="images/fuu.png" onclick="fuu();">
+        </td>
+        <td><input type="image" class="character" width="180" height="180" alt="Jin"
+				 src="images/jin.png" onclick="jin();">
+        </td>
+    </tr>
+    <tr>
+    	<th>Mugen</th>
+        <th>Fuu</th>
+        <th>Jin</th>
+    </tr>
+</table>
+
+
+<table class="characterTable">
+	<tr>
+		<th id="message" colspan="2">Unknown</th>
+	</tr>
+	<tr>
+		<th><img src="images/questionmark.png" height=200 id="message1"></th>
+		<td id="message2" style="width:50%; background-color:#ede1b9;"></td>
+    </tr>
+    
+
+</table>
+		
+        	  <button type="submit" value="Submit" class="btn" onClick="pageChange();" id="start" style="visibility:hidden">start</button>
+   
+              
+        </div>
+</form>
+
+</body>
+
+</html>
+
+
+

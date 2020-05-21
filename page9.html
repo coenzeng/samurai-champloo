@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Introduction Page</title> 
+
+<link rel="stylesheet" type="text/css" href="css/browser_reset.css">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+
+<style>
+
+
+	body {
+
+	background-image:url("./images/bossbackground.jpg");
+	}
+	
+	h3{
+	padding: 5px;
+	}
+	
+	#container_1{
+	background-color: #ffe4b5;
+	
+	}
+	
+</style>
+
+</head>
+
+<body>
+
+<div id="container_1"> 
+<form  name="displayThings" method="post" onclick="return false;">
+
+	<div>
+		<img src="images/finalfight.jpg" height=350 width=100% alt="the final fight with Reikei played out" id="bossbattle">
+	</div>
+	
+	
+	
+	<div class="grey">
+<div id="bar" class="bar bar-green" style="width:100%">Your Health: 100%</div>
+</div>
+
+<div class="grey">
+<div id="bar2" class="bar bar-red" style="width:100%">Reikei's Health: 100%</div>
+</div>
+
+<div>
+<h3 id="message2">You prepare yourself as you duel Rikei.</h3>
+<h2>What do you do next?</h2>
+</div>
+<div>
+
+	<table class="tableCenter">
+    <tr>
+    	<td> <input type="image" class="character" width="180" height="180" alt="slash"
+				 src="images/slash.png" onclick="slash();">
+        </td>
+        <td> <input type="image" class="character" width="180" height="180" alt="parry"
+				 src="images/parry.png" onclick="block();">
+        </td>
+        <td><input type="image" class="character" width="180" height="180" alt="heal"
+				 src="images/heal.png" onclick="heal();">
+        </td>
+    </tr>
+    <tr>
+    	<th>Slash</th>
+        <th>Block</th>
+        <th>Heal</th>
+    </tr>
+</table>
+
+</div>
+</div>
+</form>
+
+</body>
+
+<script>
+attack = 10;
+cpuHealth = 100;
+userHealth = 100;
+cpuAttack = 10;
+var elem = document.getElementById("bar");  //user's health bar
+var elem2 = document.getElementById("bar2"); //cpu's health bar
+ 
+var wado = sessionStorage.getItem("wado");
+var shusui = sessionStorage.getItem("shusui");
+var sandai = sessionStorage.getItem("sandai");
+var gloves = sessionStorage.getItem("gloves");
+var armor = sessionStorage.getItem("armor");
+var helmet = sessionStorage.getItem("helmet");
+
+
+	if (wado !== null) {
+		attack = attack + 5;
+	}
+
+	if (sandai !== null){
+		attack = attack + 8;
+	}
+		
+	if (armor !== null){
+	cpuAttack = cpuAttack - 4;
+	}
+
+	if (helmet !== null){
+	cpuAttack = cpuAttack - 2;
+	}
+
+var startHealth = userHealth;
+ 
+function cpu(){
+		
+		if (gloves !== null){
+		var randomNumber = Math.floor(Math.random() * 4);
+		/*The possible numbers generated are 0, 1, 2, 3.*/
+		
+		} else {
+		var randomNumber = Math.floor(Math.random() * 3);
+		/*The possible numbers generated are 0, 1, 2.*/
+	}
+		return randomNumber; /*returns the number back to the function that called this function*/
+	}
+function slash(){
+	var number = cpu();
+
+	if (number == 0) {
+		userHealth = userHealth - cpuAttack;
+		cpuHealth = cpuHealth - attack;
+		document.getElementById("message2").innerHTML = "Both you and him swing back and forth and exchange blows.";
+		document.getElementById("bossbattle").src = "images/jin3.gif";
+	} else if (number == 1) {
+		cpuHealth = cpuHealth - attack;
+		document.getElementById("bossbattle").src = "images/mugen1.gif";
+		document.getElementById("message2").innerHTML = "Each slice is narrowly dogded but you manage to clip him a few times.";
+	} else if (number == 2) {
+		userHealth = userHealth - cpuAttack;
+		document.getElementById("bossbattle").src = "images/jin1.gif";
+		document.getElementById("message2").innerHTML = "Reikei predicts your swing and he dodges first and then cuts you while you're still recovering from your move.";
+	} else if (number == 3) {
+		cpuHealth = cpuHealth - (2 * attack);
+		document.getElementById("bossbattle").src = "images/jin2.gif";
+		document.getElementById("message2").innerHTML = "You find a good opening and do double damage. Critical hit!";
+	}
+	
+	result(userHealth, cpuHealth);
+	
+}
+function block(){
+var number = cpu();
+	
+	if (number == 0) {
+		userHealth = userHealth - (cpuAttack/2);
+		cpuHealth = cpuHealth - (attack/2);
+		document.getElementById("message2").innerHTML = "Both you and Reikei charge at each other, faking an attack but blocking at the last moment. Both of you get slightly hurt.";
+	} else if (number == 1) {
+		cpuHealth = cpuHealth - attack;
+		document.getElementById("message2").innerHTML = "Reikei charges at you and successfully block and parry his attack, turning the tables on him.";
+	} else if (number == 2) {
+		cpuHealth = cpuHealth + 5;
+		document.getElementById("message2").innerHTML = "You predict that Reikei's going to attack so you preemptively block, but he actually takes this time to heal himself.";
+	} else if (number == 3) {
+		cpuHealth = cpuHealth - (2 * attack);
+		document.getElementById("message2").innerHTML = "Reikei swings his sword and you manage to perfectly block his attack and retailate with a swing of your own. Critical hit!";
+	}
+result(userHealth, cpuHealth);
+
+}
+function heal(){
+	var number = cpu();
+	
+	if (number == 0) {
+		userHealth = userHealth + 8;
+		cpuHealth = cpuHealth + 8;
+		document.getElementById("message2").innerHTML = "You use this chance to heal youself, but you see that Reikei has the same idea.";
+	} else if (number == 1) {
+		userHealth = userHealth + 8;
+		document.getElementById("message2").innerHTML = "Reikei expects an attack when in fact you use this time to heal.";
+	} else if (number == 2) {
+		userHealth = userHealth - cpuAttack;
+		document.getElementById("message2").innerHTML = "While you try to heal, Reikei attacks you and you have nothing to defend yourself with.";
+	} else if (number == 3) {
+		userHealth = userHealth + 16;
+		document.getElementById("message2").innerHTML = "The healing potion tastes especially good this time, and you heal double the regular amount. Reikei stares dumbfounded wondering why you have a blissful look on your face.";
+	}
+result(userHealth, cpuHealth);
+}
+function result (uHealth, cHealth){
+	
+	if (uHealth >= startHealth) {
+	uHealth = 100;
+	}
+	
+	if (cHealth >= 100){//if health is bigger than 100 (from healing) it will still just cap at 100
+	cHealth = 100;
+	}
+
+	
+	elem.style.width = uHealth + '%'; //the width of your health bar depends on what your actual health is
+	elem.innerHTML = "Your Health: " + uHealth * 1  + '%'; //your health percentage will display inside the bar
+	
+	elem2.style.width = cHealth + '%'; 
+	elem2.innerHTML = "Reikei's Health: " + cHealth * 1  + '%';
+	
+	if (uHealth <= 0) {//if you lose, go to page 10, where you will be prompted to try the boss battle again
+		window.location = "page10.html";
+	}else if (cHealth <= 0) {//if you win, go to the conclusion page
+		window.location = "page11.html";
+	}
+	return false;
+}
+</script>
+
+</html>
+
+

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Introduction Page</title> 
+
+<link rel="stylesheet" type="text/css" href="css/browser_reset.css">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+
+<style>
+
+
+	body {
+
+	background-image:url("./images/gatebackground.jpg");
+	
+	
+	}
+	#container_1{
+	background-color: #ffe4b5;
+	}
+	
+</style>
+
+<script>
+
+
+	function proceed(){
+		window.location = "page7.html"; //goes to next page
+	
+		return false;
+	}
+	
+	
+	
+</script>
+
+</head>
+
+<body>
+
+<div id="container_1"> 
+<form  name="displayThings" method="post" onclick="return false;">
+
+
+<label for="playerInput"></label>
+	<h1>The headquarter's gates</h1>
+<div>
+<table class="characterTable">
+	<tr>
+		<td><img src="images/guard.png" width=400 alt="guard"></td>
+		<td id="message">Wow, you weren't lying this time when you said you have something special. Thank you for giving me your Shusui. You may go ahead.</td>
+	</tr>
+    
+</table>
+		<div>
+	<button type="submit" value="Submit" class="btn2" id="key" onclick="return proceed()">proceed</button>
+</div>
+</div>
+</div>
+</form>
+
+</body>
+
+</html>
+
+

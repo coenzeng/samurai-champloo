@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+
+
+
+<!-- make an entrance fee like $5000 or something. after they get that by gambling they can purshase an item(the key) which will get them to the next checkpoint. they can also pursphacse other gear. then they will use the gear to fight the boss -->
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Introduction Page</title> 
+
+<link rel="stylesheet" type="text/css" href="css/browser_reset.css">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+
+<style>
+
+
+	body {
+
+	background-image:url("./images/gamblebackground5.jpg");
+	
+	}
+	#container_1{
+	background-color: #ffe4b5;
+	}
+	
+</style>
+
+<script>
+
+	var newCharacter = sessionStorage.getItem("character");
+	
+	var x = sessionStorage.getItem("shopMoney"); //gets the money from how much was left after the money in the shop
+
+	
+	if (x == null || isNaN(x)){ //when starting the game, the user will have nothing in the variable x, so the user will start with 1000 dollars
+		x = 1000;
+	}
+	y = 1000;	
+	
+	function pageChange(){
+		window.location = "page3.html";
+	
+	}
+
+	function gamble() {
+	
+	
+		if (newCharacter == "jin2"){
+		document.getElementById("nameUser").innerHTML = "Jin";
+	} else if (newCharacter == "mugen2"){
+		document.getElementById("nameUser").innerHTML = "Mugen";
+	} else if (newCharacter == "fuu2"){
+		document.getElementById("nameUser").innerHTML = "Fuu";
+	}
+
+		function hideBet(){ //hides the 'bet' button when user reaches over $5000
+			document.getElementById("betButton").style.visibility = "hidden";
+		}
+		
+		var randomNumber = Math.floor(Math.random() * (3));
+		var betmoney = document.displayThings.level.value;
+			
+			if (randomNumber == 0){
+			var result = betmoney; //positive value
+				document.getElementById("message6").innerHTML = "You lost money!"
+			} else if (randomNumber == 1  || randomNumber == 2) {
+			var result = ~betmoney + 1; // the squiggly line makes the number negative
+				document.getElementById("message6").innerHTML = "You gained money!"
+			}
+			
+		x = x - result;
+
+		document.getElementById("message4").innerHTML = "Money: $" + x;
+		
+		//following code is for the cpu. variable 'randomMoney' is what amount of money the cpu decides to pick, and variable randomNumber2 decides if the cpu wins or loses
+			var randomNumber2 = Math.floor(Math.random() * (3));
+			var randomMoney = Math.floor(Math.random() * (5));
+			
+			if (randomMoney == 0) {
+				var cpuMoney = 50;
+			} else if (randomMoney == 1) {
+				var cpuMoney = 100;
+			} else if (randomMoney == 2) {
+				var cpuMoney = 200;
+			} else if (randomMoney == 3) {
+				var cpuMoney = 500;
+			} else if (randomMoney == 4) {
+				var cpuMoney = 750
+			} 
+			
+				if (randomNumber2 == 0){
+				var cpuresult = cpuMoney;
+				} else if (randomNumber2 == 1  || randomNumber2 == 2) {
+				var cpuresult = ~cpuMoney + 1; // the squiggly line makes the number negative
+				}
+	
+			y = y - cpuresult;
+			
+			
+			document.getElementById("message5").innerHTML = "Money: $" + y;
+		
+		
+		
+		if (x >= 5000 || y <= 0) {
+			document.getElementById("message6").innerHTML = "You're so lucky tonight that the owner kick you out of the gambling house and forbid you from further betting. Come back tomorrow!";
+			hideBet();
+		} else if (x <= 0) { 
+			
+			document.getElementById("message6").innerHTML = "You lost all your money! The owner gives you $100 out of pity. He enjoys gambling with you.";
+			x = 100; //when user loses all their money they are given $100
+		}
+	
+	document.getElementById("message4").innerHTML = "Money: $" + x;
+	
+	
+	sessionStorage.setItem("newMoney", x); //stores how much money the user leaves with 
+	
+	return false;
+	}
+	
+</script>
+
+</head>
+
+<body>
+
+<div id="container_1"> 
+<form  name="displayThings" method="post" onclick="return false;">
+
+
+<label for="playerInput"></label>
+	<h1>The gambling house</h1>
+
+<div>
+<h2>What do you want to bet?</h2>
+</div>
+<div>
+<select class="select-css" size="5" id="level">
+    <option value="50">$50</option>
+    <option value="100">$100</option>
+    <option value="200">$200</option>
+    <option value="500">$500</option>
+	<option value="750">$750</option>
+  </select>
+ </div>
+ <div>
+<button type="submit" value="Submit" class="btn2" id="betButton" onclick="return gamble()">Bet!</button>
+</div>
+
+<table class="characterTable">
+	<tr>
+		<th colspan="2">Money</th>
+	</tr>
+	<tr>
+	<td id="nameUser">Player</td>
+	<td>Nagatomi</td>
+	</tr>
+	<tr>
+		<td id="message4">Money:</td>
+		<td id="message5">Money: $1000</td>
+    </tr>
+	<tr>
+	<td colspan="2" id="message6">You and Nagatomi sit down across from each other and begin betting.</td>
+	</tr>
+	</table>
+	
+		<div>
+			<button class="continueButton" id="continue" onclick="pageChange()">Leave</button>
+		</div>
+</div>
+</form>
+
+</body>
+
+</html>
+
+

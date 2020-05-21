@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Town Page</title> 
+
+<link rel="stylesheet" type="text/css" href="css/browser_reset.css"> 
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<style>
+
+body {
+	background-image:url("./images/townbackground.jpg");
+
+}
+
+#container_1{
+	background-color: #ffe4b5;
+	}
+	
+</style>
+	<script>
+	
+	var x = sessionStorage.getItem("newMoney2"); //retrieves money from shop page
+	
+	if (x == null) { //if there is no money in the shop page, meaning the user has not bought anything from the shop yet, then instead the value is retrieved from the gambling page, whose default is $1000
+	var x = sessionStorage.getItem("newMoney");
+	}
+	
+	sessionStorage.setItem("shopMoney", x)
+	
+	function gamblingHouse() {
+		document.getElementById("message").innerHTML = "The Gambling House";
+		document.getElementById("message1").innerHTML = "This below-the-radar establishment is run by Rikiei's gang, and goes mostly unnoticed by the police in the surrounding area. Nagatomi, the owner of the gambling house, is romoured to be one of Reikei's most trusted servant. In a pinch, this is the fastest way to make cash.";
+			var page = "gambleHouse";
+			window.page2 = page;
+			showStart();
+	}
+	
+	function shop() {
+		document.getElementById("message").innerHTML = "Chiyo's Shop";
+		document.getElementById("message1").innerHTML = "The shop is where you can buy gear and other necessary items to aid you on your adventure. It is been run by Chiyo for more than 15 years, who is unanimously respected by everyone in the village except for Rikiei's gang.";
+		var page = "shop";
+		window.page2 = page;
+		showStart();
+	}
+	
+	function headquarters() {
+		document.getElementById("message").innerHTML = "Rikiei's Headquarters";
+		document.getElementById("message1").innerHTML = "This is where all the main operations go down, and the only place where one can challenge Rikiei and his gang to a duel. However, the even step inside the premise, a compensation is required to show that you are worth his time.";
+		var page = "headquarters";
+		window.page2 = page;
+		showStart();
+	}
+	
+	function showStart(){
+	document.getElementById("go").style.visibility = "visible";
+	}
+	function pageChange(){
+		
+		if (page2 == "gambleHouse") {
+			window.location = "page2.html";
+		} else if (page2 == "shop") {
+			window.location = "page4.html";
+		} else if (page2 == "headquarters") {
+			window.location = "page5.html";
+		}
+		
+		return false;
+		
+	}
+
+	</script>
+</head>
+
+<body>
+
+<form name="game" method="post" onSubmit="return false;">
+<div id="container_1"> 
+
+<label for="playerInput"></label>
+
+		<h1>Town of Takahata</h1>
+
+<h2>Where would you like to go?</h2>
+ 
+
+<table class="tableCenter">
+    <tr>
+    	<td> <input type="image" class="character" width="200" height="170" alt="gambling house"
+				 src="images/gamblinghouse.jpeg" onclick="gamblingHouse();">
+        </td>
+        <td> <input type="image" class="character" width="200" height="170" alt="shop"
+				 src="images/shop.png" onclick="shop();">
+        </td>
+        <td><input type="image" class="character" width="200" height="170" alt="headquarters"
+				 src="images/bosshouse2.jpg" onclick="headquarters();">
+        </td>
+    </tr>
+    <tr>
+    	<th>The Gambling House</th>
+        <th>Chiyo's Shop</th>
+        <th>Rikiei's Headquarters</th>
+    </tr>
+</table>
+
+
+<table class="characterTable">
+	<tr>
+		<th id="message">Unknown</th>
+	</tr>
+	<tr>
+		<td id="message1"></td>
+    </tr>
+    
+
+</table>
+		
+        	  <button type="submit" value="Submit" class="btn" onClick="pageChange();" id="go" style="visibility:hidden">go!</button>
+   
+              
+        </div>
+</form>
+
+</body>
+
+</html>
+
+
+

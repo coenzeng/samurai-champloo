@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Introduction Page</title> 
+
+<link rel="stylesheet" type="text/css" href="css/browser_reset.css">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+
+<style>
+
+
+	body {
+
+	background-image:url("./images/bossbackground.jpg");
+	
+	
+	}
+	#container_1{
+	background-color: #ffe4b5;
+	}
+	
+</style>
+
+<script>
+
+
+	function tryAgain(){
+		window.location = "page9.html";
+		return false;
+	}
+	
+	function homeScreen(){
+		sessionStorage.clear();
+		window.location = "index.html";
+		return false;
+	}
+	
+	
+	
+</script>
+
+</head>
+
+<body>
+
+<div id="container_1"> 
+<form  name="displayThings" method="post" onclick="return false;">
+
+
+<label for="playerInput"></label>
+	<h1>You Lost!</h1>
+<div>
+
+		<h3 id="message">Unfortunately you have fallen and can't seem to bring yourself up in you duel against Reikei. It's clear: you have lost the fight, but he gives you another chance to defeat him. Do you accept his challenge?</h3>
+	<div>
+	<button class="btn2" onclick="return tryAgain()">Try Boss Battle Again</button>
+	<button class="btn2" onclick="return homeScreen()">Back to Home Screen</button>
+</div>
+</div>
+</div>
+</form>
+
+</body>
+
+</html>
+
+

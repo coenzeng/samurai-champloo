@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Introduction Page</title> 
+
+<link rel="stylesheet" type="text/css" href="css/browser_reset.css">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+
+<style>
+
+
+	body {
+
+	background-image:url("./images/gatebackground.jpg");
+	
+	}
+	#container_1{
+	background-color: #ffe4b5;
+	}
+</style>
+
+<script>
+
+	
+	var a = sessionStorage.getItem("shusui"); 
+	
+	function gift(){
+	if (a == null){ //if the user does not have shusui, this message displays
+		document.getElementById("message").innerHTML = "You don't have anything valuable kid. Get out of here before I personally kick you out.";
+	} else {//if the user DOES have shusui, then they will be directed to the next page
+		window.location = "page6.html";	
+	}
+		return false;
+	}
+	
+	
+	function pageChange(){//goes back to town page
+		window.location = "page3.html";
+	
+	}
+
+</script>
+
+</head>
+
+<body>
+
+<div id="container_1"> 
+<form  name="displayThings" method="post" onclick="return false;">
+
+
+<label for="playerInput"></label>
+	<h1>The headquarter's gates</h1>
+<div>
+<table class="characterTable">
+	<tr>
+		<td><img src="images/guard.png" width=400 alt="guard"></td>
+		<td id="message">Halt! You can't pass through unless you give up a legendary sword as a sacrifice in exchange for our master sacrificing his precious time for you.</td>
+	</tr>
+</div>
+
+
+
+<div>
+	<button type="submit" value="Submit" class="btn2" id="key" onclick="return gift()">I have something!</button>
+</div>
+    
+</table>
+		<div>
+			<button class="continueButton" id="continue" onclick="pageChange()" >Leave</button>
+		</div>
+</div>
+</form>
+
+</body>
+
+</html>
+
+

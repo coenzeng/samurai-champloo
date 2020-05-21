@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Introduction Page</title> 
+
+<link rel="stylesheet" type="text/css" href="css/browser_reset.css"> 
+<link rel="stylesheet" type="text/css" href="css/main.css">
+
+<style>
+
+	body {
+
+	background-image:url("./images/shopbackground.jpg");
+	}
+	
+	h1 {
+		padding-top: 30px;
+		padding-bottom: 10px;
+	
+	
+	}
+	#container_1{
+	background-color: #ffe4b5;
+	}
+
+</style>
+
+	<script>
+	var newMoney = sessionStorage.getItem("shopMoney");
+
+	function pageChange(){ //leaves the page to go back to town page
+		window.location = "page3.html";
+	}
+	
+	function hideBuy(){ //hides buy button
+		document.getElementById("buyButton").style.visibility = "hidden";
+	}
+	//following functions is what the shop owner will say when the user presses on an item
+	function wado() {
+		document.getElementById("message").innerHTML = "Heh, I actually have some personal history with that sword. it was passed down from my family, but course, I have no use for it now! Attack + 5.";
+			var item = "wado";
+			window.item2 = item;
+			
+	}
+	
+	function shusui() {
+		document.getElementById("message").innerHTML = "This sword is said to be wielded by the great samurai Ryuma. It's a legendary grade sword and definitely the most valuable sword here. Attack + 10.";
+		var item = "shusui";
+		window.item2 = item;
+		
+	}
+	
+	function sandai() {
+		document.getElementById("message").innerHTML = "I suggest you don't mess with this one. It's been rumoured that all samurai who have owned this have died with this in hand. I'm not sure why I still leave it open for everyone to see at my shop. Attack + 8.";
+		var item = "sandai";
+		window.item2 = item;
+	
+	}
+	
+	function gloves() {
+		document.getElementById("message").innerHTML = "You might find yourself more lucky when you wield these gloves. Although, the last guy to wear these is now the skull that I'm using to display the helmet, but let's not talk about that. Luck: + ??";
+			var item = "gloves";
+			window.item2 = item;
+			
+	}
+	
+	function armor() {
+		document.getElementById("message").innerHTML = "Armor's always useful for improving your health and survivability. Damage Mitigation: + 4.";
+			var item = "armor";
+			window.item2 = item;
+			
+	}
+	
+	function helmet() {
+		document.getElementById("message").innerHTML = "You'll surely have to protect your head of all things. Please ignore the skull... Damage Mitigation: + 2.";
+			var item = "helmet";
+			window.item2 = item;
+		
+	}
+	
+	function buy(){//when the buy button is clicked this function is called
+	
+		if (item2 == "wado"){ //item2 is a global variable that changes depending on what the last clicked item was
+		var a = sessionStorage.getItem("wado"); //searches to see if this item is already in session storage
+			if (a == null){ //if the item is not in session storage then the user can buy the item
+			var money2 = newMoney - 400; //money2 is the current money minus the price of the item
+				itemBought(money2);
+			} else {
+				soldOut();// if it already is in session storage, the onwer will say that this item has already been purchased
+			}
+		
+		} else if (item2 == "shusui"){
+			var a = sessionStorage.getItem("shusui");
+			if (a == null){ 
+			var money2 = newMoney - 2000;
+				itemBought(money2);
+			} else {
+				soldOut();
+			}
+		
+		} else if (item2 == "sandai"){
+			var a = sessionStorage.getItem("sandai");
+			if (a == null){ 
+			var money2 = newMoney - 1600;
+				itemBought(money2);
+			} else {
+				soldOut();
+			}
+		} else if (item2 == "gloves"){
+			var a = sessionStorage.getItem("gloves");
+			if (a == null){ 
+			var money2 = newMoney - 1300;
+				itemBought(money2);
+			} else {
+				soldOut();
+			}
+		} else if (item2 == "armor"){
+			var a = sessionStorage.getItem("armor");
+			if (a == null){ 
+			var money2 = newMoney - 1700;
+				itemBought(money2);
+			} else {
+				soldOut();
+			}
+		} else if (item2 == "helmet"){
+			var a = sessionStorage.getItem("helmet");
+			if (a == null){ 
+			var money2 = newMoney - 800;
+				itemBought(money2);
+			} else {
+				soldOut();
+			}
+	}
+	}
+	function itemBought(money2){//money 
+	
+	
+		if (newMoney == null || isNaN(newMoney)){//checks to see if the user has no money
+		document.getElementById("message").innerHTML = "Sorry, you don't have enough to purchase that! It seems that you don't have any money.";
+		var money2 = newMoney;
+		} else if (money2 < 0){//if the user has money but not enough, this message will display
+		var money2 = newMoney; //money is reset
+		document.getElementById("message").innerHTML = "Sorry, you don't have enough to purchase that! It seems like you only have $" + newMoney + "."; 
+		
+		
+		} else { //this happens if the user does have enough money
+		document.getElementById("message").innerHTML = "Thanks for purchasing! Your new balance is $" + money2 + ". Please come again tomorrow to shop more."; 
+		hideBuy();
+			if (item2 == "wado"){
+				sessionStorage.setItem("wado", wado);//sets whatever item that is bought in its respective session storage
+			} else if (item2 == "shusui"){
+				sessionStorage.setItem("shusui", shusui);
+			} else if (item2 == "sandai"){
+				sessionStorage.setItem("sandai", sandai);
+			} else if (item2 == "gloves"){
+				sessionStorage.setItem("gloves", gloves);	
+			} else if (item2 == "armor"){
+				sessionStorage.setItem("armor", armor);
+			} else if (item2 == "helmet"){
+				sessionStorage.setItem("helmet", helmet);	
+		}	
+		hideBuy();//hides buy button
+		}
+		
+		sessionStorage.setItem("newMoney", money2);//sets the new amount of money the user has after buying item
+		
+		
+		return false;
+		}
+	
+	function soldOut(){ //user can't buy the same item twice
+		document.getElementById("message").innerHTML = "Sorry, it looks like you already purchased that item."
+	}
+
+
+	</script>
+</head>
+
+<body>
+
+<form name="game" method="post" onClick="return false;">
+<div id="container_1"> 
+
+<label for="playerInput"></label>
+
+		<h1>SHOP</h1>
+
+<table class="tableCenter">
+    <tr>
+    	<td> <input type="image" class="character" width="150" height="150" alt="wado sword"
+				 src="images/wado.png" onclick="wado();">
+        </td>
+        <td> <input type="image" class="character" width="150" height="150" alt="shusui sword"
+				 src="images/shusui.png" onclick="shusui();">
+        </td>
+        <td><input type="image" class="character" width="150" height="150" alt="sandai sword"
+				 src="images/sandai.png" onclick="sandai();">
+        </td>
+    </tr>
+	<tr>
+    	<th>$400</th>
+        <th>$2000</th>
+        <th>$1600</th>
+    </tr>
+    <tr>
+    	<th style="padding-top:0px;">Wado Ichimonji</th>
+        <th style="padding-top:0px;">Shusui</th>
+        <th style="padding-top:0px;">Sandai Kitetsu</th>
+    </tr>
+	
+	<tr>
+    	<td> <input type="image" class="character" width="150" height="150" alt="lucky gloves"
+				 src="images/gloves.png" onclick="gloves();">
+        </td>
+        <td> <input type="image" class="character" width="150" height="150" alt="Samurai Armor"
+				 src="images/armor.png" onclick="armor();">
+        </td>
+        <td><input type="image" class="character" width="150" height="150" alt="Samurai Helmet"
+				 src="images/helmet.png" onclick="helmet();">
+        </td>
+    </tr>
+	<tr>
+    	<th>$1300</th>
+        <th>$1700</th>
+        <th>$800</th>
+    </tr>
+    <tr>
+    	<th style="padding-top:0px;">Lucky Gloves</th>
+        <th style="padding-top:0px;">Samurai Armor</th>
+        <th style="padding-top:0px;">Samurai Helmet</th>
+    </tr>
+</table>
+
+<button type="submit" value="Submit" class="btn2" id="buyButton" onClick="buy();">buy</button>
+<table class="characterTable">
+	<tr>
+		<th><img src="images/shopkeeper.jpg" width=200 alt="shopkeeper"></th>
+		<td id="message" style="width:70%">Hi there traveller, what interests you today?</td>
+	</tr>
+    
+</table>
+		
+        <div>
+			<button class="continueButton" onclick="pageChange()">Leave</button>
+		</div>
+   
+              
+        </div>
+</form>
+
+</body>
+
+</html>
+
+
+

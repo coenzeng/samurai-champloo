@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Introduction Page</title> 
+
+<link rel="stylesheet" type="text/css" href="css/browser_reset.css">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+
+<style>
+
+
+	body {
+
+	background-image:url("./images/bossbackground.jpg");
+
+	}
+	
+	h3 {
+	padding-top: 10px;
+	padding-bottom: 5px;
+	}
+	#container_1{
+	background-color: #ffe4b5;
+	}
+	
+</style>
+
+<script>
+
+function pageChange(){
+
+	var year = document.displayThings.year.value;
+	var price = document.displayThings.price.value;	
+
+		if (year == "correct" && price == "correct") {
+			
+			window.location = "page8.html"; //will direct user to next page if answers are both correct
+		
+		} else if (year == "incorrect" || price == "incorrect"){
+			document.getElementById("message").innerHTML = "Incorrect. Try Again.";
+			
+		}
+		return false;
+}
+</script>
+
+</head>
+
+<body>
+
+<div id="container_1"> 
+<form name="displayThings" method="post" onSubmit="return pageChange()">
+
+
+<label for="playerInput"></label>
+	<h1>The Test</h1>
+
+
+	<div>
+		<table class="characterTable">
+	<tr>
+		<td><img src="images/boss2.png" width=300 alt="boss"></td>
+		<td id="message" style="width:70%">Welcome, challenger. You have made it far. But before dueling you, I must test your intellect, so I do not feel bad killing an already wasted life.</td>
+	</tr>
+	</table>
+</div>
+
+<div>
+<h4>What year is it?</h4>
+</div>
+<div>
+ 
+		    <select class="select-css" name="year">
+				<option value="correct">1769</option>
+				<option value="incorrect">1453</option>
+				<option value="incorrect">1548</option>
+			</select>
+		  </div>
+	<div>
+	<h4>Another one. What was the exact price of the Shusui that you purchased?</h4>
+	</div>
+ <div>
+ 
+		    <select class="select-css" name="price">
+				<option value="incorrect">$1700</option>
+				<option value="correct">$2000</option> 
+				<option value="incorrect">$1300</option>
+			</select>
+		  </div>
+		
+	<button type="submit" value="Submit" class="btn2">confirm</button>
+
+</div>
+</form>
+
+</body>
+
+</html>
+
+

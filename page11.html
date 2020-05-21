@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Introduction Page</title> 
+
+<link rel="stylesheet" type="text/css" href="css/browser_reset.css">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+
+<style>
+
+
+	body {
+
+	background-image:url("./images/townbackground.jpg");
+	
+	
+	}
+	#container_1{
+	background-color: #ffe4b5;
+	}
+	
+</style>
+
+<script>
+	
+	function homeScreen(){
+		sessionStorage.clear(); //clears everything in session storage, so when restarting the game the user will have no items
+		window.location = "index.html";
+		return false;
+	}
+	
+</script>
+
+</head>
+
+<body>
+
+<div id="container_1"> 
+
+<img src="images/logo.png" width="500" alt="samurai champloo logo">
+	<h1>You Win!</h1>
+	
+	<div>
+		<h3>You've defeated Reikei and saved the town of Takahata from his tyrannical rule! After gourging down on all the food that the villager's have given you as thanks, you three continue on your journey, excited about what your future adventures entail.</h3>
+	</div>
+	
+	<div>
+	
+	<img src="images/okonelastgif.gif" width="500" alt="the trio celebrating their victory">
+	</div>
+	<div>
+	<button class="btn2" onclick="return homeScreen()">Finish.</button>
+	</div>
+	
+</div>
+
+
+</body>
+
+</html>
+
+
